@@ -30,9 +30,22 @@ document.addEventListener("DOMContentLoaded", function() {
 			ul.append(br);
 
 			var form = document.createElement('form');
-			//form.innerText = 'hi'
+			var submitButton = document.createElement('input');
+			submitButton.setAttribute('type', 'submit');
+			
+			form.setAttribute('method', 'POST');
+			form.setAttribute('action', 'https://bb-election-api.herokuapp.com/vote');
+			
+			form.append(submitButton);
 			candidateVoteLiTag.append(form);
 			
+			var hiddenField = document.createElement('input');
+			hiddenField.type = 'hidden';
+			hiddenField.name = 'name';
+			hiddenField.value = name;
+
+			form.append(hiddenField);
+
 		})
 		
 		console.log('made api call successfully');
